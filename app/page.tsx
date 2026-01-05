@@ -1,5 +1,5 @@
 // app/page.tsx
-export default function HomePage() {
+export default function Page() {
   return (
     <main className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-md rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
