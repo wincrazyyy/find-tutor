@@ -1,7 +1,7 @@
 // app/page.tsx
 export default function Page() {
   return (
-    <main className="min-h-screen p-6 flex items-center justify-center bg-gradient-to-b from-emerald-50 via-white to-white">
+    <main className="min-h-screen p-6 flex items-center justify-center bg-linear-to-b from-emerald-50 via-white to-white">
       <div className="w-full max-w-sm rounded-3xl border border-emerald-200 bg-white p-7 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-2xl bg-emerald-200" />
