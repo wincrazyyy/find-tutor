@@ -1,42 +1,43 @@
 // app/signup/page.tsx
 export default function SignupPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-6">
-      <div className="w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-        <h1 className="text-xl font-semibold">Sign up</h1>
-        <p className="mt-1 text-sm text-neutral-600">
-          Create an account (UI only).
-        </p>
+    <main className="min-h-screen p-6 flex items-center justify-center bg-linear-to-b from-emerald-50 via-white to-white">
+      <div className="w-full max-w-sm rounded-3xl border border-emerald-200 bg-white p-7 shadow-sm">
+        <h1 className="text-2xl font-semibold text-neutral-900">Sign up</h1>
+        <p className="mt-2 text-sm text-neutral-600">Teacher Portal</p>
 
-        <form className="mt-6 space-y-4">
-          <div className="space-y-1">
-            <label className="text-sm font-medium" htmlFor="name">
-              Name
+        <form className="mt-6 grid gap-4">
+          <div className="grid gap-1">
+            <label htmlFor="name" className="text-sm font-medium text-neutral-900">
+              Full name
             </label>
             <input
               id="name"
               type="text"
               autoComplete="name"
-              placeholder="Your name"
-              className="h-11 w-full rounded-xl border border-neutral-200 px-3 outline-none focus:border-neutral-400"
+              placeholder="e.g. Winson Siu"
+              className="h-12 w-full rounded-2xl border border-emerald-200 px-4 outline-none focus:border-emerald-400"
             />
           </div>
 
-          <div className="space-y-1">
-            <label className="text-sm font-medium" htmlFor="email">
-              Email
+          <div className="grid gap-1">
+            <label htmlFor="email" className="text-sm font-medium text-neutral-900">
+              Work email
             </label>
             <input
               id="email"
               type="email"
               autoComplete="email"
-              placeholder="you@example.com"
-              className="h-11 w-full rounded-xl border border-neutral-200 px-3 outline-none focus:border-neutral-400"
+              placeholder="you@email.com"
+              className="h-12 w-full rounded-2xl border border-emerald-200 px-4 outline-none focus:border-emerald-400"
             />
           </div>
 
-          <div className="space-y-1">
-            <label className="text-sm font-medium" htmlFor="password">
+          <div className="grid gap-1">
+            <label
+              htmlFor="password"
+              className="text-sm font-medium text-neutral-900"
+            >
               Password
             </label>
             <input
@@ -44,23 +45,25 @@ export default function SignupPage() {
               type="password"
               autoComplete="new-password"
               placeholder="••••••••"
-              className="h-11 w-full rounded-xl border border-neutral-200 px-3 outline-none focus:border-neutral-400"
+              className="h-12 w-full rounded-2xl border border-emerald-200 px-4 outline-none focus:border-emerald-400"
             />
           </div>
 
           <button
             type="button"
-            className="h-11 w-full rounded-xl bg-neutral-900 text-sm font-medium text-white hover:bg-neutral-800"
+            className="h-12 w-full rounded-2xl bg-emerald-600 text-sm font-medium text-white hover:bg-emerald-500"
           >
             Create account
           </button>
 
-          <p className="text-sm text-neutral-600">
-            Already have an account?{" "}
-            <a href="/login" className="text-neutral-900 hover:underline">
-              Log in
+          <div className="flex items-center justify-between text-sm">
+            <a href="/" className="text-emerald-800 hover:underline">
+              Back home
             </a>
-          </p>
+            <a href="/login" className="text-emerald-800 hover:underline">
+              Already have an account?
+            </a>
+          </div>
         </form>
       </div>
     </main>

@@ -15,7 +15,7 @@ export default function LoginPage() {
               id="email"
               type="email"
               autoComplete="email"
-              placeholder="you@school.edu"
+              placeholder="you@email.com"
               className="h-12 w-full rounded-2xl border border-emerald-200 px-4 outline-none focus:border-emerald-400"
             />
           </div>
