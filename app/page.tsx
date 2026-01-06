@@ -1,11 +1,7 @@
 // app/page.tsx
-import { Nav } from "./_components/layout/nav";
-
 export default function Page() {
   return (
     <main className="min-h-screen bg-white">
-      <Nav />
-
       {/* Student-facing content */}
       <section className="mx-auto w-full max-w-5xl px-6 py-10">
         <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
