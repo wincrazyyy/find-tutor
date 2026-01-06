@@ -3,12 +3,10 @@ export function Nav() {
   return (
     <header className="border-b border-neutral-200">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3">
           <div className="h-9 w-9 rounded-2xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
-          <div className="text-sm font-semibold text-[#050B1E]">
-            Tutor Marketplace
-          </div>
-        </div>
+          <div className="text-sm font-semibold text-[#050B1E]">Find Tutor</div>
+        </a>
 
         <nav className="flex items-center gap-2">
           <a
