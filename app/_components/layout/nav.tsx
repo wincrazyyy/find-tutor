@@ -1,10 +1,19 @@
 // app/_components/layout/nav.tsx
+import Image from "next/image";
+
 export function Nav() {
   return (
     <header className="border-b border-neutral-200">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-2xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
+          <Image
+            src="/logo-square.png"
+            alt="Find Tutor"
+            width={36}
+            height={36}
+            className="rounded-2xl ring-1 ring-[#050B1E]/10"
+            priority
+          />
           <div className="text-sm font-semibold text-[#050B1E]">Find Tutor</div>
         </a>
 
