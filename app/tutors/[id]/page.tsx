@@ -228,12 +228,6 @@ export default function TutorProfilePage() {
           </aside>
         </div>
       </section>
-
-      <footer className="border-t border-neutral-200">
-        <div className="mx-auto w-full max-w-5xl px-6 py-6 text-xs text-neutral-500">
-          © {new Date().getFullYear()} Tutor Marketplace
-        </div>
-      </footer>
     </main>
   );
 }
