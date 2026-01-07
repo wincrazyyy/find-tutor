@@ -1,4 +1,6 @@
 // app/page.tsx
+import Link from "next/link";
+
 export default function Page() {
   const subjects = [
     "Math",
@@ -167,12 +169,12 @@ export default function Page() {
                     </span>
                   </div>
 
-                  <button
-                    type="button"
+                  <Link
+                    href={`/tutors/${i}`}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-2xl bg-[#050B1E] text-sm font-medium text-white hover:bg-[#07102D]"
                   >
                     View profile
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>
