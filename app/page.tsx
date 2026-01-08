@@ -15,9 +15,9 @@ export default function Page() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Student-facing content */}
       <section className="mx-auto w-full max-w-5xl px-6 py-10">
         <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+          {/* Top: title + search */}
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-medium text-[#050B1E]">
             For students
           </div>
@@ -26,11 +26,11 @@ export default function Page() {
             Find a tutor. Learn with confidence.
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-600">
-            Browse tutors by subject, level, and availability. Book sessions and
-            track progress — all in one place.
+            Browse tutors by subject, level, and availability. Premium, curated
+            teaching — for students who want high-quality support.
           </p>
 
-          {/* Quick search bar (UI only) */}
+          {/* Search bar */}
           <div className="mt-7 grid gap-3 sm:grid-cols-[1fr_auto]">
             <div className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-3">
               <div className="h-9 w-9 rounded-xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
@@ -64,69 +64,7 @@ export default function Page() {
             ))}
           </div>
 
-          {/* How it works */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6">
-              <div className="text-xs text-neutral-500">Search</div>
-              <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                Find the right tutor
-              </div>
-              <p className="mt-2 text-sm text-neutral-600">
-                Filter by subject, year group, and style.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6">
-              <div className="text-xs text-neutral-500">Book</div>
-              <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                Schedule lessons easily
-              </div>
-              <p className="mt-2 text-sm text-neutral-600">
-                Choose a time that fits your week.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6">
-              <div className="text-xs text-neutral-500">Improve</div>
-              <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                Track your progress
-              </div>
-              <p className="mt-2 text-sm text-neutral-600">
-                Stay consistent with clear goals.
-              </p>
-            </div>
-          </div>
-
-          {/* Trust strip */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-3xl border border-neutral-200 bg-white p-6">
-              <div className="text-xs text-neutral-500">Verified</div>
-              <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                Teacher profiles
-              </div>
-              <p className="mt-2 text-sm text-neutral-600">
-                Clear subjects, experience, and availability.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-neutral-200 bg-white p-6">
-              <div className="text-xs text-neutral-500">Transparent</div>
-              <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                Upfront info
-              </div>
-              <p className="mt-2 text-sm text-neutral-600">
-                See rates, format, and teaching style at a glance.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-neutral-200 bg-white p-6">
-              <div className="text-xs text-neutral-500">Flexible</div>
-              <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                Online or in-person
-              </div>
-              <p className="mt-2 text-sm text-neutral-600">
-                Choose what fits your schedule and location.
-              </p>
-            </div>
-          </div>
-
-          {/* Placeholder tutor list (student-facing) */}
+          {/* Featured tutors */}
           <div className="mt-10">
             <div className="flex items-end justify-between gap-4">
               <h2 className="text-lg font-semibold text-[#050B1E]">
@@ -180,15 +118,15 @@ export default function Page() {
             </div>
           </div>
 
-          {/* CTA for teachers */}
+          {/* CTA (teachers) */}
           <div className="mt-10 rounded-3xl border border-violet-200 bg-violet-50 p-6">
             <div className="text-xs font-medium text-[#050B1E]">For teachers</div>
             <div className="mt-1 text-lg font-semibold text-[#050B1E]">
-              Offer tutoring on your schedule
+              Teach on a premium marketplace
             </div>
             <p className="mt-2 text-sm text-neutral-600">
-              Create a profile, list subjects, and start receiving student
-              enquiries.
+              Create a profile, list subjects, and connect with students who
+              value high-quality tutoring.
             </p>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row">
               <a
