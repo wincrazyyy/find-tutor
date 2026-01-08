@@ -9,7 +9,7 @@ export function Hero() {
 
       <div className="relative">
         <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-medium text-[#050B1E]">
-          For students
+          Curated tutors for students who expect premium outcomes
         </div>
 
         {/* Brand name (keep size) */}
@@ -22,7 +22,7 @@ export function Hero() {
           Premium private tutoring,{" "}
           <span className="relative inline-block">
             <span className="relative z-10">tailored for you</span>
-            <span className="absolute -inset-x-1 bottom-1 -z-0 h-3 rounded-full bg-violet-200/60" />
+            <span className="absolute -inset-x-1 bottom-1 z-0 h-3 rounded-full bg-violet-200/60" />
           </span>
           .
         </h1>
