@@ -8,10 +8,14 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-white">
       <section className="mx-auto w-full max-w-5xl px-6 py-10">
-        <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-          <Hero />
-          <Search />
+        <Hero />
+        <Search />
+
+        <div className="mt-10 border-t border-neutral-200 pt-10">
           <FeaturedTutors />
+        </div>
+
+        <div className="mt-10">
           <TeacherCTA />
         </div>
       </section>
