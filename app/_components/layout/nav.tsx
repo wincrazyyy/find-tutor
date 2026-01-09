@@ -1,11 +1,29 @@
 // app/_components/layout/nav.tsx
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { SearchBar } from "../search-bar";
+
+const NAV_SEARCH_EVENT = "findtutor:nav-search";
 
 export function Nav() {
+  const [showNavSearch, setShowNavSearch] = useState(false);
+
+  useEffect(() => {
+    const onToggle = (e: Event) => {
+      const ce = e as CustomEvent<{ show: boolean }>;
+      setShowNavSearch(Boolean(ce.detail?.show));
+    };
+
+    window.addEventListener(NAV_SEARCH_EVENT, onToggle);
+    return () => window.removeEventListener(NAV_SEARCH_EVENT, onToggle);
+  }, []);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
-        <a href="/" className="flex items-center gap-3">
+      <div className="mx-auto flex w-full max-w-5xl items-center gap-4 px-6 py-4">
+        <a href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo-square.png"
             alt="Find Tutor"
@@ -17,7 +35,17 @@ export function Nav() {
           <div className="text-sm font-semibold text-[#050B1E]">Find Tutor</div>
         </a>
 
-        <nav className="flex items-center gap-2">
+        {/* Nav search (appears after you scroll past main search) */}
+        <div
+          className={[
+            "hidden flex-1 transition-all duration-200 sm:block",
+            showNavSearch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none",
+          ].join(" ")}
+        >
+          <SearchBar variant="nav" />
+        </div>
+
+        <nav className="flex items-center gap-2 shrink-0">
           <a
             href="/login"
             className="inline-flex h-10 items-center justify-center rounded-xl bg-[#050B1E] px-4 text-sm font-medium text-white hover:bg-[#07102D]"

@@ -1,5 +1,14 @@
 // app/_components/search.tsx
+"use client";
+
+import { useEffect, useRef } from "react";
+import { SearchBar } from "./search-bar";
+
+const NAV_SEARCH_EVENT = "findtutor:nav-search";
+
 export function Search() {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   const subjects = [
     "Math",
     "English",
@@ -11,27 +20,49 @@ export function Search() {
     "Economics",
   ];
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const emit = (show: boolean) => {
+      window.dispatchEvent(
+        new CustomEvent(NAV_SEARCH_EVENT, { detail: { show } })
+      );
+    };
+
+    // initial
+    emit(false);
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+
+        // If the search bar is visible -> hide nav search
+        if (entry.isIntersecting) {
+          emit(false);
+          return;
+        }
+
+        // Only show nav search if we've scrolled PAST it (it moved above viewport)
+        const scrolledPast = entry.boundingClientRect.top < 0;
+        emit(scrolledPast);
+      },
+      {
+        threshold: 0,
+        // account for fixed nav height so it doesn't flicker when sitting under the nav
+        rootMargin: "-90px 0px 0px 0px",
+      }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="mt-7">
-      {/* Search bar */}
-      <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-        <div className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-3">
-          <div className="h-9 w-9 rounded-xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
-          <div className="w-full">
-            <div className="text-xs text-neutral-500">Search tutors</div>
-            <input
-              placeholder="Try: Math, IELTS, Chemistry..."
-              className="mt-1 w-full bg-transparent text-sm text-[#050B1E] outline-none placeholder:text-neutral-400"
-            />
-          </div>
-        </div>
-
-        <button
-          type="button"
-          className="h-14 rounded-2xl bg-[#050B1E] px-6 text-sm font-medium text-white hover:bg-[#07102D]"
-        >
-          Search
-        </button>
+      {/* Observe this block (the “main” search bar) */}
+      <div ref={ref}>
+        <SearchBar variant="full" />
       </div>
 
       {/* Popular subjects */}
