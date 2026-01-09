@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export function FeaturedTutors() {
   return (
-    <div className="mt-10">
+    <div className="mt-4">
       <div className="flex items-end justify-between gap-4">
-        <h2 className="text-lg font-semibold text-[#050B1E]">Featured tutors</h2>
+        <h1 className="text-2xl font-semibold text-[#050B1E]">Featured tutors</h1>
         <a href="#" className="text-sm text-[#050B1E] hover:underline">
           View all
         </a>
