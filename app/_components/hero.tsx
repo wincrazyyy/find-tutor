@@ -12,9 +12,8 @@ export function Hero() {
 
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[#050B1E] sm:text-5xl">
         Premium private tutoring,{" "}
-        <span className="relative inline-block">
-          <span className="relative z-10">tailored for you</span>
-          <span className="absolute -inset-x-1 bottom-2 z-0 h-3 rounded-full bg-violet-200/60" />
+        <span className="underline decoration-violet-200 decoration-4 underline-offset-4">
+          tailored for you
         </span>
         .
       </h1>
