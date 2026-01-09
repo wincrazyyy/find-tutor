@@ -23,6 +23,7 @@ export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-5xl items-center gap-4 px-6 py-4">
+        {/* Brand (logo always, text hides when search is shown) */}
         <a href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo-square.png"
@@ -32,19 +33,31 @@ export function Nav() {
             className="rounded-2xl ring-1 ring-[#050B1E]/10"
             priority
           />
-          <div className="text-sm font-semibold text-[#050B1E]">Find Tutor</div>
+          <div
+            className={[
+              "text-sm font-semibold text-[#050B1E] transition-all duration-200",
+              showNavSearch
+                ? "w-0 overflow-hidden opacity-0"
+                : "w-auto opacity-100",
+            ].join(" ")}
+          >
+            Find Tutor
+          </div>
         </a>
 
-        {/* Nav search (appears after you scroll past main search) */}
+        {/* Nav search (takes the middle space, effectively covering the title) */}
         <div
           className={[
-            "hidden flex-1 transition-all duration-200 sm:block",
-            showNavSearch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none",
+            "flex-1 transition-all duration-200",
+            showNavSearch
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-1 pointer-events-none",
           ].join(" ")}
         >
           <SearchBar variant="nav" />
         </div>
 
+        {/* Actions */}
         <nav className="flex items-center gap-2 shrink-0">
           <a
             href="/login"

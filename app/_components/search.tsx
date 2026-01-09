@@ -60,7 +60,6 @@ export function Search() {
 
   return (
     <div className="mt-7">
-      {/* Observe this block (the “main” search bar) */}
       <div ref={ref}>
         <SearchBar variant="full" />
       </div>
