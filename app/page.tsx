@@ -7,8 +7,11 @@ import { TeacherCTA } from "./_components/teacher-cta";
 export default function Page() {
   return (
     <main className="min-h-screen bg-white">
+      {/* Full-width hero */}
+      <Hero />
+
+      {/* Normal page container */}
       <section className="mx-auto w-full max-w-5xl px-6 py-10">
-        <Hero />
         <Search />
 
         <div className="mt-10 border-t border-neutral-200 pt-10">
