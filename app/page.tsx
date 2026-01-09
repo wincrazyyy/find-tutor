@@ -2,6 +2,7 @@
 import { Hero } from "./_components/hero";
 import { Search } from "./_components/search";
 import { FeaturedTutors } from "./_components/featured-tutors";
+import { Schools } from "./_components/schools";
 import { TeacherCTA } from "./_components/teacher-cta";
 
 export default function Page() {
@@ -13,8 +14,7 @@ export default function Page() {
         <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-violet-200/40 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-violet-100/60 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(124,58,237,0.06),transparent_45%)]" />
-
-        {/* bottom fade into white (replaces border) */}
+        {/* bottom fade into white */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(to_bottom,transparent,white)]" />
 
         {/* aligned content */}
@@ -32,18 +32,7 @@ export default function Page() {
           <FeaturedTutors />
         </div>
 
-        <div className="mt-10">
-          for testing
-          <TeacherCTA />
-        </div>
-
-        <div className="mt-10">
-          <TeacherCTA />
-        </div>
-
-        <div className="mt-10">
-          <TeacherCTA />
-        </div>
+        <Schools />
 
         <div className="mt-10">
           <TeacherCTA />
