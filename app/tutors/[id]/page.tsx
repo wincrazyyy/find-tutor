@@ -13,12 +13,6 @@ export default function TutorProfilePage() {
     subjects: ["Math", "Physics", "Exam Prep"],
     levels: ["Middle School", "IGCSE", "A-Level"],
     availability: ["Weekdays (Evening)", "Sat (Morning)"],
-    highlights: [
-      { k: "Teaching style", v: "Step-by-step, concept-first" },
-      { k: "Lesson format", v: "Online (Zoom/Meet)" },
-      { k: "Homework", v: "Optional practice set" },
-      { k: "Languages", v: "English, 中文" },
-    ],
     academic: {
       school: "University of Example",
       degree: "BSc in Mathematics",
@@ -26,6 +20,12 @@ export default function TutorProfilePage() {
       credentials: ["PGCE (Secondary)", "DBS checked (UK)", "Verified profile"],
       awards: ["Dean’s List (2017–2019)", "National Math Olympiad (Finalist)"],
     },
+    highlights: [
+      { k: "Teaching style", v: "Step-by-step, concept-first" },
+      { k: "Lesson format", v: "Online (Zoom/Meet)" },
+      { k: "Homework", v: "Optional practice set" },
+      { k: "Languages", v: "English, 中文" },
+    ],
     stats: [
       { k: "Students taught", v: "180+" },
       { k: "Total hours", v: "320+" },
