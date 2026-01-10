@@ -13,11 +13,24 @@ export default function TutorProfilePage() {
     subjects: ["Math", "Physics", "Exam Prep"],
     levels: ["Middle School", "IGCSE", "A-Level"],
     availability: ["Weekdays (Evening)", "Sat (Morning)"],
-    stats: [
+    highlights: [
       { k: "Teaching style", v: "Step-by-step, concept-first" },
       { k: "Lesson format", v: "Online (Zoom/Meet)" },
       { k: "Homework", v: "Optional practice set" },
       { k: "Languages", v: "English, 中文" },
+    ],
+    academic: {
+      school: "University of Example",
+      degree: "BSc in Mathematics",
+      graduation: "2019",
+      credentials: ["PGCE (Secondary)", "DBS checked (UK)", "Verified profile"],
+      awards: ["Dean’s List (2017–2019)", "National Math Olympiad (Finalist)"],
+    },
+    stats: [
+      { k: "Students taught", v: "180+" },
+      { k: "Total hours", v: "320+" },
+      { k: "Repeat bookings", v: "68%" },
+      { k: "Response time", v: "< 2 hours" },
     ],
   };
 
@@ -61,7 +74,6 @@ export default function TutorProfilePage() {
                       </span>
                       <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-700">
                         {tutor.location}
-                        verified???
                       </span>
                     </div>
                   </div>
@@ -125,24 +137,43 @@ export default function TutorProfilePage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Academic Background */}
             <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
               <h2 className="text-lg font-semibold text-[#050B1E]">
-                Academic Background
+                Academic background
               </h2>
+
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                {tutor.stats.map((h) => (
-                  <div
-                    key={h.k}
-                    className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6"
-                  >
-                    <div className="text-xs text-neutral-500">{h.k}</div>
-                    <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                      {h.v}
-                    </div>
+                <div className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6">
+                  <div className="text-xs text-neutral-500">Education</div>
+                  <div className="mt-1 text-sm font-semibold text-[#050B1E]">
+                    {tutor.academic.school}
                   </div>
-                ))}
+                  <div className="mt-2 text-sm text-neutral-600">
+                    {tutor.academic.degree} • {tutor.academic.graduation}
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {tutor.academic.credentials.map((c) => (
+                      <span
+                        key={c}
+                        className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-medium text-[#050B1E]"
+                      >
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6">
+                  <div className="text-xs text-neutral-500">Awards</div>
+                  <ul className="mt-3 space-y-2 text-sm text-neutral-600">
+                    {tutor.academic.awards.map((a) => (
+                      <li key={a}>• {a}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -152,7 +183,7 @@ export default function TutorProfilePage() {
                 Highlights
               </h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                {tutor.stats.map((h) => (
+                {tutor.highlights.map((h) => (
                   <div
                     key={h.k}
                     className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6"
@@ -168,21 +199,35 @@ export default function TutorProfilePage() {
 
             {/* Stats */}
             <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-              <h2 className="text-lg font-semibold text-[#050B1E]">
-                Stats
-              </h2>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                {tutor.stats.map((h) => (
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h2 className="text-lg font-semibold text-[#050B1E]">
+                    Stats
+                  </h2>
+                  <p className="mt-1 text-sm text-neutral-600">
+                    Quick signals of experience and reliability.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {tutor.stats.map((s) => (
                   <div
-                    key={h.k}
+                    key={s.k}
                     className="rounded-3xl border border-neutral-200 bg-neutral-50 p-6"
                   >
-                    <div className="text-xs text-neutral-500">{h.k}</div>
-                    <div className="mt-1 text-sm font-semibold text-[#050B1E]">
-                      {h.v}
+                    <div className="text-xs text-neutral-500">{s.k}</div>
+                    <div className="mt-2 text-2xl font-semibold tracking-tight text-[#050B1E]">
+                      {s.v}
                     </div>
+                    <div className="mt-3 h-1 w-14 rounded-full bg-violet-200" />
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-4 text-xs text-neutral-500">
+                Stats shown are placeholders — replace with real metrics when
+                you connect your database.
               </div>
             </div>
 
@@ -190,7 +235,9 @@ export default function TutorProfilePage() {
             <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-[#050B1E]">Reviews</h2>
+                  <h2 className="text-lg font-semibold text-[#050B1E]">
+                    Reviews
+                  </h2>
                   <p className="mt-1 text-sm text-neutral-600">
                     Past students share their experience.
                   </p>
