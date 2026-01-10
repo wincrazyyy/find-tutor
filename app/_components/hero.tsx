@@ -7,7 +7,7 @@ export function Hero() {
       </div>
 
       <div className="mt-4 text-2xl font-semibold tracking-tight text-[#050B1E]">
-        Find Tutor: Quality tutoring made easy
+        Vault of Excellence
       </div>
 
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[#050B1E] sm:text-5xl">

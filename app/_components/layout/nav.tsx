@@ -27,7 +27,7 @@ export function Nav() {
         <a href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo-square.png"
-            alt="Find Tutor"
+            alt="Vault of Excellence"
             width={36}
             height={36}
             className="rounded-2xl ring-1 ring-[#050B1E]/10"
@@ -41,7 +41,7 @@ export function Nav() {
                 : "w-auto opacity-100",
             ].join(" ")}
           >
-            Find Tutor
+            Vault of Excellence
           </div>
         </a>
 
