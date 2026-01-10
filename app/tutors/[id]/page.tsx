@@ -53,38 +53,55 @@ export default function TutorProfilePage() {
           {/* Main */}
           <div className="space-y-6">
             {/* Header card */}
-            <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            <div className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+              {/* subtle background accent (premium feel, still on-theme) */}
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-violet-200/30 blur-3xl" />
+                <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-violet-100/50 blur-3xl" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(124,58,237,0.06),transparent_55%)]" />
+              </div>
+
+              <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex items-start gap-4">
-                  <div className="h-14 w-14 rounded-3xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
-                  <div>
+                  {/* avatar */}
+                  <div className="relative">
+                    <div className="h-14 w-14 rounded-3xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
+                    {/* tiny status dot (optional) */}
+                    <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-white bg-violet-200" />
+                  </div>
+
+                  <div className="min-w-0">
                     <div className="text-xs text-neutral-500">Tutor profile</div>
 
-                    <div className="mt-1 flex items-center gap-2">
-                      <h1 className="text-3xl font-semibold tracking-tight text-[#050B1E]">
+                    {/* Name row (fixed height so layout doesn't jump) */}
+                    <div className="mt-1 flex min-h-9 flex-wrap items-center gap-2">
+                      <h1 className="truncate text-3xl font-semibold tracking-tight text-[#050B1E]">
                         {tutor.name}
                       </h1>
 
-                      {tutor.verified && (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2 py-1 text-xs font-medium text-[#050B1E]">
-                          <span
-                            aria-hidden="true"
-                            className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
-                          >
-                            ✓
-                          </span>
-                          Verified
+                      {/* Always render badge; invisible when not verified to keep spacing */}
+                      <span
+                        className={[
+                          "inline-flex h-7 items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2.5 text-xs font-medium text-[#050B1E]",
+                          tutor.verified ? "" : "invisible",
+                        ].join(" ")}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-[10px] text-white"
+                        >
+                          ✓
                         </span>
-                      )}
+                        Verified
+                      </span>
                     </div>
 
-                    <div className="mt-2 text-sm text-neutral-600">
-                      {tutor.title}
-                    </div>
+                    <div className="mt-1 text-sm text-neutral-600">{tutor.title}</div>
 
+                    {/* chips */}
                     <div className="mt-4 flex flex-wrap gap-2">
-                      <span className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-xs font-medium text-[#050B1E]">
-                        {tutor.rating}
+                      <span className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-xs font-medium text-[#050B1E]">
+                        <span aria-hidden="true">★</span> {tutor.rating}
                       </span>
                       <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-700">
                         {tutor.hours}
@@ -96,7 +113,8 @@ export default function TutorProfilePage() {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                {/* actions */}
+                <div className="flex shrink-0 gap-2">
                   <button
                     type="button"
                     className="inline-flex h-10 items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-[#050B1E] hover:bg-neutral-50"
@@ -105,17 +123,18 @@ export default function TutorProfilePage() {
                   </button>
                   <button
                     type="button"
-                    className="inline-flex h-10 items-center justify-center rounded-xl bg-[#050B1E] px-4 text-sm font-medium text-white hover:bg-[#07102D]"
+                    className="inline-flex h-10 items-center justify-center rounded-xl bg-[#050B1E] px-4 text-sm font-medium text-white shadow-sm hover:bg-[#07102D]"
                   >
                     Find tutor
                   </button>
                 </div>
               </div>
 
-              <p className="mt-6 text-sm leading-6 text-neutral-600">
+              <p className="relative mt-6 text-sm leading-6 text-neutral-600">
                 {tutor.headline}
               </p>
             </div>
+
 
             {/* About */}
             <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
