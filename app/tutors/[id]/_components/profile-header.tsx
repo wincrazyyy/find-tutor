@@ -1,7 +1,6 @@
 import type { Tutor } from "../page";
 
 function VerifiedBadge({ verified }: { verified: boolean }) {
-  // Always render; invisible when not verified to keep spacing identical
   return (
     <span
       className={[
@@ -43,61 +42,35 @@ export function ProfileHeader({ tutor }: { tutor: Tutor }) {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(124,58,237,0.06),transparent_55%)]" />
       </div>
 
-      <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex items-start gap-4">
-          {/* avatar */}
-          <div className="relative">
-            <div className="h-14 w-14 rounded-3xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
-            <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-white bg-violet-200" />
-          </div>
-
-          <div className="min-w-0">
-            <div className="text-xs text-neutral-500">Tutor profile</div>
-
-            {/* fixed height row so layout doesn't jump */}
-            <div className="mt-1 flex min-h-9 flex-wrap items-center gap-2">
-              <h1 className="truncate text-3xl font-semibold tracking-tight text-[#050B1E]">
-                {tutor.name}
-              </h1>
-              <VerifiedBadge verified={tutor.verified} />
-            </div>
-
-            <div className="mt-1 text-sm text-neutral-600">{tutor.title}</div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-xs font-medium text-[#050B1E]">
-                <span aria-hidden="true">★</span> {tutor.rating}
-              </span>
-              <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-700">
-                {tutor.hours}
-              </span>
-              <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-700">
-                {tutor.location}
-              </span>
-            </div>
-          </div>
+      <div className="relative flex items-start gap-6">
+        {/* Square avatar, sized to visually match the text block height */}
+        <div className="relative shrink-0">
+          <div className="h-28 w-28 rounded-4xl bg-violet-200 ring-1 ring-[#050B1E]/10 sm:h-32 sm:w-32" />
+          <div className="absolute -bottom-1 -right-1 h-7 w-7 rounded-full border-2 border-white bg-violet-200" />
         </div>
 
-        {/* actions */}
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            className="inline-flex h-10 items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 text-sm font-medium text-[#050B1E] hover:bg-neutral-50"
-          >
-            Save
-          </button>
-          <button
-            type="button"
-            className="inline-flex h-10 items-center justify-center rounded-xl bg-[#050B1E] px-4 text-sm font-medium text-white shadow-sm hover:bg-[#07102D]"
-          >
-            Find tutor
-          </button>
+        <div className="min-w-0">
+          <div className="text-xs text-neutral-500">Tutor profile</div>
+
+          <div className="mt-1 flex min-h-10 flex-wrap items-center gap-2">
+            <h1 className="truncate text-3xl font-semibold tracking-tight text-[#050B1E]">
+              {tutor.name}
+            </h1>
+            <VerifiedBadge verified={tutor.verified} />
+          </div>
+
+          <div className="mt-1 text-sm text-neutral-600">{tutor.title}</div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-xs font-medium text-[#050B1E]">
+              <span aria-hidden="true">★</span> {tutor.rating}
+            </span>
+            <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-700">
+              {tutor.hours}
+            </span>
+          </div>
         </div>
       </div>
-
-      <p className="relative mt-6 text-sm leading-6 text-neutral-600">
-        {tutor.headline}
-      </p>
     </div>
   );
 }

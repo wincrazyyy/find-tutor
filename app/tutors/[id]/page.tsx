@@ -1,3 +1,4 @@
+// app/tutors/[id]/page.tsx
 import { ProfileHeader } from "./_components/profile-header";
 import { About } from "./_components/about";
 import { AcademicBackground } from "./_components/academic-background";
@@ -13,8 +14,6 @@ export type Tutor = {
   title: string;
   rating: string;
   hours: string;
-  location: string;
-  headline: string;
   about: string;
   subjects: string[];
   levels: string[];
@@ -33,15 +32,12 @@ export type Tutor = {
 export type Review = { name: string; text: string };
 
 export default function TutorProfilePage() {
-  // UI-only placeholder data
   const tutor: Tutor = {
     verified: true, // <-- admin-controlled flag later
     name: "Alex Chen",
     title: "Math • Physics Tutor",
     rating: "4.9 ★",
     hours: "320+ hours taught",
-    location: "Online • GMT",
-    headline: "Calm, structured teaching with clear feedback.",
     about:
       "I help students build strong fundamentals, then move into exam-style questions with a clear method. Lessons are paced, focused, and practical.",
     subjects: ["Math", "Physics", "Exam Prep"],
@@ -69,8 +65,14 @@ export default function TutorProfilePage() {
   };
 
   const reviews: Review[] = [
-    { name: "Student A", text: "Explains concepts clearly and gives great practice questions." },
-    { name: "Student B", text: "Very patient and organised. Helped me improve my confidence." },
+    {
+      name: "Student A",
+      text: "Explains concepts clearly and gives great practice questions.",
+    },
+    {
+      name: "Student B",
+      text: "Very patient and organised. Helped me improve my confidence.",
+    },
   ];
 
   return (
@@ -80,15 +82,10 @@ export default function TutorProfilePage() {
           {/* Main */}
           <div className="space-y-6">
             <ProfileHeader tutor={tutor} />
-
             <About tutor={tutor} />
-
             <AcademicBackground tutor={tutor} />
-
             <Highlights tutor={tutor} />
-
             <Stats tutor={tutor} />
-
             <Reviews reviews={reviews} />
           </div>
 
