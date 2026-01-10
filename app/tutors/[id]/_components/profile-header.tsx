@@ -28,18 +28,35 @@ function DefaultAvatarIcon() {
 }
 
 function VerifiedCornerBadge({ verified }: { verified: boolean }) {
-  // Always render so the layout/spacing is identical.
+  // Always render so layout/spacing is identical.
   return (
     <div
       className={[
-        "absolute -bottom-2 -right-2 inline-flex h-8 items-center gap-1.5 rounded-full border border-violet-200 bg-white/85 px-2.5 text-xs font-medium text-[#050B1E] shadow-sm backdrop-blur",
+        "absolute -bottom-2 -right-2 overflow-hidden rounded-full",
+        // base badge shape
+        "inline-flex h-8 items-center gap-1.5 px-2.5 text-xs font-medium",
+        "border border-violet-200 bg-white/85 text-[#050B1E] shadow-sm backdrop-blur",
+        // make it feel special
+        "ring-1 ring-violet-200/70",
+        // keep footprint identical when not verified
         verified ? "" : "invisible",
       ].join(" ")}
       aria-label={verified ? "Verified tutor" : undefined}
     >
+      {/* glossy shine sweep */}
       <span
         aria-hidden="true"
-        className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
+        className="pointer-events-none absolute -left-1 top-0 h-full w-10 -skew-x-12 bg-white/60 blur-[0.5px] opacity-70"
+      />
+      {/* subtle inner highlight */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/70"
+      />
+
+      <span
+        aria-hidden="true"
+        className="relative inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
       >
         <svg viewBox="0 0 20 20" fill="none" className="h-3 w-3">
           <path
@@ -51,7 +68,8 @@ function VerifiedCornerBadge({ verified }: { verified: boolean }) {
           />
         </svg>
       </span>
-      Verified
+
+      <span className="relative">Verified</span>
     </div>
   );
 }
@@ -96,13 +114,27 @@ function Avatar({
 
 export function ProfileHeader({ tutor }: { tutor: Tutor }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-      {/* subtle background accent */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-violet-200/30 blur-3xl" />
-        <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-violet-100/50 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(124,58,237,0.06),transparent_55%)]" />
-      </div>
+    <div
+      className={[
+        "relative overflow-hidden rounded-3xl bg-white p-8 shadow-sm",
+        // plain when not verified
+        tutor.verified
+          ? "border border-violet-200/70 ring-1 ring-violet-200/50"
+          : "border border-neutral-200",
+      ].join(" ")}
+    >
+      {/* ONLY show premium background accents when verified */}
+      {tutor.verified && (
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-violet-200/30 blur-3xl" />
+          <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-violet-100/50 blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(124,58,237,0.06),transparent_55%)]" />
+
+          {/* extra "special" edge glow */}
+          <div className="absolute inset-0 rounded-3xl ring-1 ring-violet-200/40" />
+          <div className="absolute -inset-0.5 rounded-[26px] bg-violet-200/10 blur-xl" />
+        </div>
+      )}
 
       <div className="relative flex items-start gap-6">
         <Avatar
