@@ -1,33 +1,6 @@
 import Image from "next/image";
 import type { Tutor } from "../page";
 
-function VerifiedBadge({ verified }: { verified: boolean }) {
-  return (
-    <span
-      className={[
-        "inline-flex h-7 items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2.5 text-xs font-medium text-[#050B1E]",
-        verified ? "" : "invisible",
-      ].join(" ")}
-    >
-      <span
-        aria-hidden="true"
-        className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
-      >
-        <svg viewBox="0 0 20 20" fill="none" className="h-3 w-3">
-          <path
-            d="M16.667 5.833 8.333 14.167 3.333 9.167"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
-      Verified
-    </span>
-  );
-}
-
 function DefaultAvatarIcon() {
   return (
     <svg
@@ -54,9 +27,46 @@ function DefaultAvatarIcon() {
   );
 }
 
-function Avatar({ src, name }: { src?: string; name: string }) {
+function VerifiedCornerBadge({ verified }: { verified: boolean }) {
+  // Always render so the layout/spacing is identical.
   return (
-    // outer wrapper: allows the corner dot to overflow without clipping
+    <div
+      className={[
+        "absolute -bottom-2 -right-2 inline-flex h-8 items-center gap-1.5 rounded-full border border-violet-200 bg-white/85 px-2.5 text-xs font-medium text-[#050B1E] shadow-sm backdrop-blur",
+        verified ? "" : "invisible",
+      ].join(" ")}
+      aria-label={verified ? "Verified tutor" : undefined}
+    >
+      <span
+        aria-hidden="true"
+        className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
+      >
+        <svg viewBox="0 0 20 20" fill="none" className="h-3 w-3">
+          <path
+            d="M16.667 5.833 8.333 14.167 3.333 9.167"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+      Verified
+    </div>
+  );
+}
+
+function Avatar({
+  src,
+  name,
+  verified,
+}: {
+  src?: string;
+  name: string;
+  verified: boolean;
+}) {
+  return (
+    // outer wrapper: allows the badge to overflow without clipping
     <div className="relative h-32 w-32 shrink-0 overflow-visible">
       {/* inner square: clips the image */}
       <div className="relative h-full w-full overflow-hidden rounded-3xl bg-violet-200 ring-1 ring-[#050B1E]/10">
@@ -78,8 +88,8 @@ function Avatar({ src, name }: { src?: string; name: string }) {
         ) : null}
       </div>
 
-      {/* corner dot: now not clipped */}
-      <div className="absolute -bottom-2 -right-2 h-7 w-7 rounded-full border-2 border-white bg-violet-200" />
+      {/* Verified badge replaces the old "online dot" */}
+      <VerifiedCornerBadge verified={verified} />
     </div>
   );
 }
@@ -95,9 +105,13 @@ export function ProfileHeader({ tutor }: { tutor: Tutor }) {
       </div>
 
       <div className="relative flex items-start gap-6">
-        <Avatar src={tutor.imageSrc} name={tutor.name} />
+        <Avatar
+          src={tutor.imageSrc}
+          name={tutor.name}
+          verified={tutor.verified}
+        />
 
-        {/* This ensures the left text block is the SAME height as the avatar */}
+        {/* keep text block aligned to avatar height */}
         <div className="min-w-0 min-h-32 flex flex-col justify-center">
           <div className="text-xs text-neutral-500">Tutor profile</div>
 
@@ -105,7 +119,6 @@ export function ProfileHeader({ tutor }: { tutor: Tutor }) {
             <h1 className="truncate text-3xl font-semibold tracking-tight text-[#050B1E]">
               {tutor.name}
             </h1>
-            <VerifiedBadge verified={tutor.verified} />
           </div>
 
           <div className="mt-1 text-sm text-neutral-600">{tutor.title}</div>
