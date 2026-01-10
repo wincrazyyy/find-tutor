@@ -2,6 +2,7 @@
 export default function TutorProfilePage() {
   // UI-only placeholder data
   const tutor = {
+    verified: true, // <-- admin-controlled flag later
     name: "Alex Chen",
     title: "Math • Physics Tutor",
     rating: "4.9 ★",
@@ -58,9 +59,25 @@ export default function TutorProfilePage() {
                   <div className="h-14 w-14 rounded-3xl bg-violet-200 ring-1 ring-[#050B1E]/10" />
                   <div>
                     <div className="text-xs text-neutral-500">Tutor profile</div>
-                    <h1 className="mt-1 text-3xl font-semibold tracking-tight text-[#050B1E]">
-                      {tutor.name}
-                    </h1>
+
+                    <div className="mt-1 flex items-center gap-2">
+                      <h1 className="text-3xl font-semibold tracking-tight text-[#050B1E]">
+                        {tutor.name}
+                      </h1>
+
+                      {tutor.verified && (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2 py-1 text-xs font-medium text-[#050B1E]">
+                          <span
+                            aria-hidden="true"
+                            className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
+                          >
+                            ✓
+                          </span>
+                          Verified
+                        </span>
+                      )}
+                    </div>
+
                     <div className="mt-2 text-sm text-neutral-600">
                       {tutor.title}
                     </div>
@@ -201,9 +218,7 @@ export default function TutorProfilePage() {
             <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-[#050B1E]">
-                    Stats
-                  </h2>
+                  <h2 className="text-lg font-semibold text-[#050B1E]">Stats</h2>
                   <p className="mt-1 text-sm text-neutral-600">
                     Quick signals of experience and reliability.
                   </p>
