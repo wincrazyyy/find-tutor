@@ -88,9 +88,22 @@ export default function TutorProfilePage() {
                       >
                         <span
                           aria-hidden="true"
-                          className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-[10px] text-white"
+                          className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
                         >
-                          ✓
+                          <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            className="h-3 w-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M16.667 5.833 8.333 14.167 3.333 9.167"
+                              stroke="currentColor"
+                              strokeWidth="2.2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
                         </span>
                         Verified
                       </span>
