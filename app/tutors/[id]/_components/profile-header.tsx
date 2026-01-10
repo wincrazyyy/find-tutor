@@ -33,7 +33,7 @@ function DefaultAvatarIcon() {
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      className="h-9 w-9 text-[#050B1E]/70"
+      className="h-10 w-10 text-[#050B1E]/70"
       aria-hidden="true"
     >
       <path
@@ -71,7 +71,7 @@ function Avatar({ src, name }: { src?: string; name: string }) {
             src={src}
             alt={name}
             fill
-            sizes="112px"
+            sizes="128px"
             className="object-cover"
             priority={false}
           />
