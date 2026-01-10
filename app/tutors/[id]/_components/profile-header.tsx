@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Tutor } from "../page";
 
 function VerifiedBadge({ verified }: { verified: boolean }) {
@@ -12,12 +13,7 @@ function VerifiedBadge({ verified }: { verified: boolean }) {
         aria-hidden="true"
         className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#050B1E] text-white"
       >
-        <svg
-          viewBox="0 0 20 20"
-          fill="none"
-          className="h-3 w-3"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg viewBox="0 0 20 20" fill="none" className="h-3 w-3">
           <path
             d="M16.667 5.833 8.333 14.167 3.333 9.167"
             stroke="currentColor"
@@ -32,6 +28,62 @@ function VerifiedBadge({ verified }: { verified: boolean }) {
   );
 }
 
+function DefaultAvatarIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="h-9 w-9 text-[#050B1E]/70"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 12.25c2.5 0 4.5-2.06 4.5-4.6S14.5 3.05 12 3.05 7.5 5.1 7.5 7.65s2 4.6 4.5 4.6Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.5 20.95c1.5-3.5 4.2-5.2 7.5-5.2s6 1.7 7.5 5.2"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function Avatar({ src, name }: { src?: string; name: string }) {
+  return (
+    // outer wrapper: allows the corner dot to overflow without clipping
+    <div className="relative h-32 w-32 shrink-0 overflow-visible">
+      {/* inner square: clips the image */}
+      <div className="relative h-full w-full overflow-hidden rounded-3xl bg-violet-200 ring-1 ring-[#050B1E]/10">
+        {/* default icon always visible underneath */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <DefaultAvatarIcon />
+        </div>
+
+        {/* image overlays the icon when present */}
+        {src ? (
+          <Image
+            src={src}
+            alt={name}
+            fill
+            sizes="112px"
+            className="object-cover"
+            priority={false}
+          />
+        ) : null}
+      </div>
+
+      {/* corner dot: now not clipped */}
+      <div className="absolute -bottom-2 -right-2 h-7 w-7 rounded-full border-2 border-white bg-violet-200" />
+    </div>
+  );
+}
+
 export function ProfileHeader({ tutor }: { tutor: Tutor }) {
   return (
     <div className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
@@ -43,13 +95,10 @@ export function ProfileHeader({ tutor }: { tutor: Tutor }) {
       </div>
 
       <div className="relative flex items-start gap-6">
-        {/* Square avatar, sized to visually match the text block height */}
-        <div className="relative shrink-0">
-          <div className="h-28 w-28 rounded-4xl bg-violet-200 ring-1 ring-[#050B1E]/10 sm:h-32 sm:w-32" />
-          <div className="absolute -bottom-1 -right-1 h-7 w-7 rounded-full border-2 border-white bg-violet-200" />
-        </div>
+        <Avatar src={tutor.imageSrc} name={tutor.name} />
 
-        <div className="min-w-0">
+        {/* This ensures the left text block is the SAME height as the avatar */}
+        <div className="min-w-0 min-h-32 flex flex-col justify-center">
           <div className="text-xs text-neutral-500">Tutor profile</div>
 
           <div className="mt-1 flex min-h-10 flex-wrap items-center gap-2">

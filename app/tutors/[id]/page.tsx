@@ -10,6 +10,7 @@ import { Tips } from "./_components/tips";
 
 export type Tutor = {
   verified: boolean;
+  imageSrc?: string;
   name: string;
   title: string;
   rating: string;
@@ -29,11 +30,12 @@ export type Tutor = {
   stats: { k: string; v: string }[];
 };
 
+
 export type Review = { name: string; text: string };
 
 export default function TutorProfilePage() {
   const tutor: Tutor = {
-    verified: true, // <-- admin-controlled flag later
+    verified: true,
     name: "Alex Chen",
     title: "Math • Physics Tutor",
     rating: "4.9 ★",
